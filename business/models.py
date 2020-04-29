@@ -14,6 +14,9 @@ class Business(models.Model):
     logo = models.CharField(max_length=300, blank=True, null=True)
     pickup_time = models.TimeField(default="20:00:00")
 
+    def __str__(self):
+        return self.name
+
 
 class Category(models.Model):
     class Meta:
@@ -21,6 +24,9 @@ class Category(models.Model):
         ordering = ['name']
 
     name = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.name
 
 
 class Product(models.Model):
@@ -30,6 +36,11 @@ class Product(models.Model):
 
     name = models.CharField(max_length=100)
     description = models.TextField(max_length=300)
-    price = models.FloatField(default=0.0)
+    price = models.FloatField(default=0.0, help_text="Este es el precio original sin descuento")
+    discount = models.IntegerField(default=50, help_text="Este valor hace referencia en porciente")
+    business = models.ForeignKey('business.Business', on_delete=models.PROTECT, null=True, blank=True)
+
+    def __str__(self):
+        return self.name
 
 
