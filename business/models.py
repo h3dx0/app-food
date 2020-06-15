@@ -1,6 +1,10 @@
 from django.db import models
 
-
+ORDER_STATUS = (
+    ('NEW', 'Nueva'),
+    ('COMPLETED', 'Completada'),
+    ('CANCELLED', 'Cancelada')
+)
 # Create your models here.
 class Business(models.Model):
     class Meta:
@@ -44,3 +48,16 @@ class Product(models.Model):
         return self.name
 
 
+class Order(models.Model):
+    number = models.CharField(default=000, max_length=12)
+    units = models.IntegerField(default=1)
+    created = models.DateTimeField(auto_created=True)
+    total = models.FloatField(default=0.0)
+    status = models.CharField(choices=ORDER_STATUS, default='NEW', max_length=12)
+
+
+class OrderProduct(models.Model):
+    order = models.ForeignKey('business.Order', related_name='products', on_delete=models.CASCADE)
+    product = models.ForeignKey('business.Product', related_name='order', on_delete=models.CASCADE)
+    units = models.IntegerField(default=1)
+    total = models.FloatField(default=0.0)
