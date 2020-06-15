@@ -14,12 +14,12 @@ def category_list(request):
     return render(request, 'category/list_category.html')
 
 
-def menu_list(request):
-    return render(request, 'menu/add_menu.html')
+def product_list(request):
+    return render(request, 'product/list_product.html')
 
 
-def menu_add(request):
-    return render(request, 'menu/list_menu.html')
+def product_add(request):
+    return render(request, 'product/add_product.html')
 
 
 def order_list(request):

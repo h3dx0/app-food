@@ -25,7 +25,7 @@ SECRET_KEY = 'qgdngc2dlzerhuz9_+e=cr0%ca+z$o@5c7)2ghtd_@hb4mehl7'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost']
+ALLOWED_HOSTS = ['localhost','5344ef633122.ngrok.io']
 
 AUTH_USER_MODEL = 'general_admin.User'
 
