@@ -44,6 +44,10 @@ class Product(models.Model):
     discount = models.IntegerField(default=50, help_text="Este valor hace referencia en porciente")
     business = models.ForeignKey('business.Business', on_delete=models.PROTECT, null=True, blank=True)
     active = models.BooleanField(default=True)
+    units = models.IntegerField(default=1)
+
+    def get_discount_price(self):
+        return (self.discount / 100) * self.price
 
     def __str__(self):
         return self.name

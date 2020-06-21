@@ -52,7 +52,15 @@
 
                 <!-- sidebar product -->
                 <ul class="nav sidebar-inner" id="sidebar-menu">
+                    <li class="active">
+                        <a class="sidenav-item-link" href="{% url 'business:business_resume' %}" data-toggle="collapse"
+                           data-target="#dashboard"
+                           aria-expanded="false" aria-controls="dashboard">
+                            <i class="mdi mdi-view-dashboard-outline"></i>
+                            <span class="nav-text">Resumen</span>
+                        </a>
 
+                    </li>
                     <li class="active">
                         <a class="sidenav-item-link" href="{% url 'business:order_list' %}" data-toggle="collapse"
                            data-target="#dashboard"

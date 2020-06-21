@@ -18,66 +18,43 @@
                             <th>Product Name</th>
                             <th class="d-none d-lg-table-cell">Unidades disponibles</th>
                             <th class="d-none d-lg-table-cell">Precio original</th>
-                            <th class="d-none d-lg-table-cell">Order Cost</th>
+                            <th class="d-none d-lg-table-cell">Descuento</th>
                             <th>Estado</th>
                             <th></th>
                         </tr>
                         </thead>
                         <tbody>
-                        <tr>
-                            <td>
-                                <a class="text-dark" href=""> Paquete panes</a>
-                            </td>
-                            <td class="d-none d-lg-table-cell">5</td>
-                            <td class="d-none d-lg-table-cell">$550</td>
-                            <td class="d-none d-lg-table-cell">$230</td>
-                            <td>
-                                <span class="badge badge-success">Activo</span>
-                            </td>
-                            <td class="text-right">
-                                <div class="dropdown show d-inline-block widget-dropdown">
-                                    <a class="dropdown-toggle icon-burger-mini" href="" role="button"
-                                       id="dropdown-recent-order1" data-toggle="dropdown" aria-haspopup="true"
-                                       aria-expanded="false" data-display="static"></a>
-                                    <ul class="dropdown-menu dropdown-menu-right"
-                                        aria-labelledby="dropdown-recent-order1">
-                                        <li class="dropdown-item">
-                                            <a href="#">View</a>
-                                        </li>
-                                        <li class="dropdown-item">
-                                            <a href="#">Remove</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <a class="text-dark" href=""> Conchas</a>
-                            </td>
-                            <td class="d-none d-lg-table-cell">8</td>
-                            <td class="d-none d-lg-table-cell">$550</td>
-                            <td class="d-none d-lg-table-cell">$230</td>
-                            <td>
-                                <span class="badge badge-danger">Desactivado</span>
-                            </td>
-                            <td class="text-right">
-                                <div class="dropdown show d-inline-block widget-dropdown">
-                                    <a class="dropdown-toggle icon-burger-mini" href="" role="button"
-                                       id="dropdown-recent-order1" data-toggle="dropdown" aria-haspopup="true"
-                                       aria-expanded="false" data-display="static"></a>
-                                    <ul class="dropdown-menu dropdown-menu-right"
-                                        aria-labelledby="dropdown-recent-order1">
-                                        <li class="dropdown-item">
-                                            <a href="#">View</a>
-                                        </li>
-                                        <li class="dropdown-item">
-                                            <a href="#">Remove</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </td>
-                        </tr>
+                        {% for product in products %}
+                            <tr>
+                                <td>
+                                    <a class="text-dark" href=""> {{ product.name }}</a>
+                                </td>
+                                <td class="d-none d-lg-table-cell">{{ product.units }}</td>
+                                <td class="d-none d-lg-table-cell">${{ product.price }}</td>
+                                <td class="d-none d-lg-table-cell">
+                                    <span class="tachado">{{ product.discount }}% </span>- ${{ product.get_discount_price }}</td>
+                                <td>
+                                    <span class="badge badge-success">Activo</span>
+                                </td>
+                                <td class="text-right">
+                                    <div class="dropdown show d-inline-block widget-dropdown">
+                                        <a class="dropdown-toggle icon-burger-mini" href="" role="button"
+                                           id="dropdown-recent-order1" data-toggle="dropdown" aria-haspopup="true"
+                                           aria-expanded="false" data-display="static"></a>
+                                        <ul class="dropdown-menu dropdown-menu-right"
+                                            aria-labelledby="dropdown-recent-order1">
+                                            <li class="dropdown-item">
+                                                <a href="#">View</a>
+                                            </li>
+                                            <li class="dropdown-item">
+                                                <a href="#">Remove</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </td>
+                            </tr>
+                        {% endfor %}
+
 
                         </tbody>
                     </table>
